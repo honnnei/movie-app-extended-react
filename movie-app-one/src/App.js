@@ -5,35 +5,38 @@ import HomePage from './containers/HomePage';
    constructor(props){
      super(props);
      this.state = {
-      selectedMovie : null
-   };
-   }
-
-   componentDidMount() {
-    this.getMovieData();
+      movieSearchResults : null
+    };
   }
 
-  const allMoviesLink = `http://www.omdbapi.com/?s=${searchTerm}&apikey=${apiKey}`
-  const selectedMovieLink = `http://www.omdbapi.com/?t=${movieImbdId}&apikey=${apiKey}`
-  const movieImbdId = "";
-  const movieQuery = "";
-  const apiKey = "2480f3a";
-  getMovieData = () => {
-   fetch("http://www.omdbapi.com/?apikey=b91ba3c6&")
+  
+  // const movieImbdId = "";
+  
+  // getMovieData = () => {
+    let movieQuery = "matrix";
+    let apiKey = "2480f3a";
+    let allMoviesLink = `http://www.omdbapi.com/?s=${movieQuery}&apikey=${apiKey}`
+    // let selectedMovieLink = `http://www.omdbapi.com/?t=${movieImbdId}&apikey=${apiKey}`
+   fetch(allMoviesLink)
      .then(response => response.json())
      .then(result => this.setState(
            {
-             selectedMovie: result
+            movieSearchResults: result
            },
-         () => console.log("setState Completed", this.state.selectedMovie)
+         () => console.log("setState Completed", this.state.movieSearchResults)
        )
      );
   };
 
+  componentDidMount() {
+    // this.getMovieData();
+  }
+
 
   render() {
     return(
-      <HomePage />
+      // {this.state.movieSearchResults}
+      <HomePage results={this.state.movieSearchResults}/>
     );
      
   }

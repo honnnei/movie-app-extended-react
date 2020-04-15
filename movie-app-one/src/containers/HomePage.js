@@ -4,26 +4,46 @@ import Search from '../components/Search';
 import Results from '../components/Results';
 
 
-class HomePage extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-    // selectedMovie : null
-    };
-    }
+// class HomePage extends React.Component {
+//     constructor(props) {
+//       super(props);
+//       this.state = {
+//         allResults : props.results
+//     };
+//     }
+    
+//     render() {
+//     console.log('from HP props:');
+//     console.log(this.state.allResults);
+//         return(
+//             <div className="homepage">
+//                 <Header />
 
-    render() {
+//                 <Search />
+//                 <Results />
+//             </div>
+            
+//         );
+//     }
+
+// }
+
+function HomePage(props)  {
+    console.log(props.results);
+  
+
         return(
             <div className="homepage">
                 <Header />
+                
                 <Search />
-                <Results />
+                <Results allResults={props.results}/>
             </div>
             
         );
-    }
-
 }
+
+
 
 
 
