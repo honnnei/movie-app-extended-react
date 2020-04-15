@@ -1,13 +1,12 @@
 import React from 'react';
 
-function MovieResult() {
-
+function MovieResult(props) {
+    console.log(props.movie)
     return(
         <div className="movie_result">
-            <h1>Title</h1>
-            <h3>Year</h3>
-            <h3>Rating</h3>
-            <h3>Poster</h3>
+            <h1>{props.movie.Title}</h1>
+            <h3>{props.movie.Year}</h3>
+            <img src={props.movie.Poster}></img>
         </div>
     );
 
