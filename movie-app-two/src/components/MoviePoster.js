@@ -1,16 +1,16 @@
 import React from 'react';
 
 function MoviePoster(props) {
-    let image;
+    let movieDetails;
     if (!props.posterUrl) {
-        image = "Image loading!";
+        movieDetails = ".";
     } else {
-        image = <img src={props.posterUrl}></img>
+        movieDetails = <div className="displayedMovieInfo"><h2>{props.movieTitle}</h2><h3>{props.movieYear}</h3><img src={props.posterUrl}></img></div>
     }
 
     return(
        <div>
-           {image}
+           {movieDetails}
        </div>
     );
 

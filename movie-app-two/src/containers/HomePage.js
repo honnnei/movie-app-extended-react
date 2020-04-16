@@ -36,27 +36,29 @@ class HomePage extends React.Component {
 
         let displayMovie;
 
-        if (this.state.clickedMovieIndex) {
+        if (this.state.clickedMovieIndex != null)  {
             console.log(searchArray);
             console.log(searchArray[0]);
             console.log(searchArray[this.state.clickedMovieIndex]);
             console.log(searchArray[this.state.clickedMovieIndex].Poster);
-            displayMovie = <MoviePoster posterUrl={searchArray[this.state.clickedMovieIndex].Poster}/>;
+            displayMovie = <MoviePoster 
+                    posterUrl={searchArray[this.state.clickedMovieIndex].Poster}
+                    movieTitle={searchArray[this.state.clickedMovieIndex].Title}
+                    movieYear={searchArray[this.state.clickedMovieIndex].Year}
+            />;
         } else {
             displayMovie = ".";
         }
 
         return(
             <div className="homepage">
-                {/* <Header />
-                <Search />
-                <Results /> */}
                 <div className="searchResults">
-                {display}
+                    {display}
                 </div>
-                {displayMovie}
+                <div className="display">
+                    {displayMovie}
+                </div>
             </div>
-            
         );
     }
 

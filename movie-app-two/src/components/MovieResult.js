@@ -11,28 +11,14 @@ class MovieResult extends React.Component {
       };
       }
 
-render() {
-    // let movieDisplay =".";
-    // this.displayMovieInfo = (event) => { 
-    //     event.preventDefault();
-        
-    //     movieDisplay = <MovieInfo title={this.props.movie.Title} year={this.props.movie.Year} poster={this.props.movie.Poster} />
-        
-    //     console.log(this.props.movieIndex);
-    //     // onClick={this.displayMovieInfo}
-    // }
-    
-   
-    return(
-        <div className="movie_result" onClick={this.state.onClick} >
-            <h1>{this.props.movie.Title}</h1>
-            <h3>{this.props.movie.Year}</h3>
-            {/* {movieDisplay} */}
-           
-        </div>
-    );
+    render() {
+        return(
+            // <div className="movie_result" onClick={this.state.onClick}></div>
+                <p onClick={this.state.onClick} className="movie_result">{this.props.movie.Title}, {this.props.movie.Year}</p>
+            
+        );
 
-}
+    }
 }
 
 export default MovieResult;
