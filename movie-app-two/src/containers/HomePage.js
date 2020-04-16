@@ -13,7 +13,7 @@ class HomePage extends React.Component {
     };
     }
 
-
+    
 
     render() {
         let searchArray = [];
@@ -24,7 +24,7 @@ class HomePage extends React.Component {
         if (!searchArray) {
             display = "Loading";
         } else {
-            display = searchArray.map((movie, index) => <MovieResult movie={movie} key={index}/>)
+            display = searchArray.map((movie, index) => <MovieResult movie={movie} key={index} movieIndex={index} array={searchArray}/>)
         }
 
         return(
