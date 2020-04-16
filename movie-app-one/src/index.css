@@ -51,3 +51,10 @@ code {
   align-items: center;
   justify-content: space-evenly;
 }
+
+.searchResults {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+}
