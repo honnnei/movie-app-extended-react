@@ -19,25 +19,28 @@ class App extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
+    alert('A name was submitted: ' + this.state.movieQuery);
     event.preventDefault();
-    const movieImbdId = "";
-    const apiKey = "2480f3a";
-    const allMoviesLink = `http://www.omdbapi.com/?s=${this.state.value}&apikey=${apiKey}`
-    // const selectedMovieLink = `http://www.omdbapi.com/?t=${movieImbdId}&apikey=${apiKey}`
-    fetch(allMoviesLink)
-      .then(response => response.json())
-      .then(result => this.setState({
-          selectedMovie: result.Search
-        },
-        () => console.log("setState Completed", this.state.selectedMovie)
-      ));
+    if (this.state.movieQuery) {
+      const movieImbdId = "";
+      const apiKey = "2480f3a";
+      const allMoviesLink = `http://www.omdbapi.com/?s=${this.state.movieQuery}&apikey=${apiKey}`
+      // const selectedMovieLink = `http://www.omdbapi.com/?t=${movieImbdId}&apikey=${apiKey}`
+      fetch(allMoviesLink)
+        .then(response => response.json())
+        .then(result => this.setState({
+            selectedMovie: result.Search
+          },
+          () => console.log("setState Completed", this.state.selectedMovie)
+        ));
+    }
+   
 
   }
 
 
   handleChange(event) {
-    this.setState({value: event.target.value});
+    this.setState({movieQuery: event.target.value});
   }
 
   render() {
@@ -46,7 +49,7 @@ class App extends React.Component {
         <div className = "searchBox" >
           <form className = "searchForm" onSubmit = {this.handleSubmit}>
             <label for = "searchTerm" > Search Movies: </label> 
-            <input type = "text" name = "searchTerm" value= {this.state.value} onChange={this.handleChange}></input> 
+            <input type = "text" name = "searchTerm" value={this.state.movieQuery} onChange={this.handleChange}></input> 
             <button type = "submit" > Search </button> 
           </form> 
         </div> 
