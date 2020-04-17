@@ -22,14 +22,18 @@ class MoviePoster extends React.Component {
 
     render() {
         let movieDetails;
-        if (!this.props.posterUrl) {
+        if (!this.props.movieDetails) {
             movieDetails = ".";
         } else {
             movieDetails =
             <div className="displayedMovieInfo">
-                <h2>{this.props.movieTitle}</h2>
-                <h3>{this.props.movieYear}</h3>
-                <img src={this.props.posterUrl}></img>
+                <h2>{this.props.movieDetails.Title}</h2>
+                <h3>{this.props.movieDetails.Released}</h3>
+                <h2>{this.props.movieDetails.Runtime}</h2>
+                <h3>{this.props.movieDetails.Genre}</h3>
+                <h2>{this.props.movieDetails.Director}</h2>
+                <h3>{this.props.movieDetails.Actors}</h3>
+                <img src={this.props.movieDetails.Poster}></img>
                 <div className="votes_div">
                     <button className="btn btn-outline-danger red_button" onClick={this.upVote}>Up Vote!</button>
                     {this.state.votes}

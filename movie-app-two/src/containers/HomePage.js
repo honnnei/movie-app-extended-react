@@ -11,15 +11,30 @@ class HomePage extends React.Component {
       super(props);
       this.state = {
     searchedMovies : this.props.searchResults, 
-    clickedMovieIndex : null
+    clickedMovieIndex : null, 
+    clickedMovieImdbID : null,
+    selectedMovie : null
     };
     }
 
-    onClick = (movieIndex) => {
+    onClick = (movieIndex, imdbid) => {
+        
         this.setState({clickedMovieIndex : movieIndex });
-        console.log('onlick works');
-        console.log(movieIndex);
-    }
+        this.setState({clickedMovieImdbID : imdbid });
+        const apiKey = "2480f3a";
+            const allMoviesLink = `http://www.omdbapi.com/?s=${this.state.movieQuery}&apikey=${apiKey}`
+            const selectedMovieLink = `http://www.omdbapi.com/?i=${imdbid}&apikey=${apiKey}`
+            fetch(selectedMovieLink)
+            .then(response => response.json())
+            .then(result => this.setState({
+                selectedMovie: result
+                },
+                () => console.log("setState Completed", this.state.selectedMovie)
+            ));
+    
+        // 
+      }
+
     
 
     render() {
@@ -31,23 +46,15 @@ class HomePage extends React.Component {
         if (!searchArray) {
             display = "Type in a query to display related movies.";
         } else {
-            display = searchArray.map((movie, index) => <MovieResult movie={movie} onClick={() => this.onClick(index)} key={index} movieIndex={index} array={searchArray}/>)
+            display = searchArray.map((movie, index) => <MovieResult movie={movie} onClick={() => this.onClick(index, movie.imdbID)} key={index} movieIndex={index} array={searchArray}/>)
         }
 
         let displayMovie;
 
-        if (this.state.clickedMovieIndex != null)  {
-            console.log(searchArray);
-            console.log(searchArray[0]);
-            console.log(searchArray[this.state.clickedMovieIndex]);
-            console.log(searchArray[this.state.clickedMovieIndex].Poster);
+        if (this.state.selectedMovie)  {
             displayMovie = <MoviePoster 
-                    posterUrl={searchArray[this.state.clickedMovieIndex].Poster}
-                    movieTitle={searchArray[this.state.clickedMovieIndex].Title}
-                    movieYear={searchArray[this.state.clickedMovieIndex].Year}
+                    movieDetails={this.state.selectedMovie}
             />;
-        } else {
-            // displayMovie = "";
         }
 
         return(

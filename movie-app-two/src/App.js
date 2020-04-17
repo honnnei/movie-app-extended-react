@@ -25,7 +25,7 @@ class App extends React.Component {
       const movieImbdId = "";
       const apiKey = "2480f3a";
       const allMoviesLink = `http://www.omdbapi.com/?s=${this.state.movieQuery}&apikey=${apiKey}`
-      // const selectedMovieLink = `http://www.omdbapi.com/?t=${movieImbdId}&apikey=${apiKey}`
+      // const selectedMovieLink = `http://www.omdbapi.com/?i=${movieImbdId}&apikey=${apiKey}`
       fetch(allMoviesLink)
         .then(response => response.json())
         .then(result => this.setState({
