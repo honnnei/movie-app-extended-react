@@ -29,7 +29,7 @@ class HomePage extends React.Component {
         let display;
 
         if (!searchArray) {
-            display = "Loading";
+            display = "Type in a query to display related movies.";
         } else {
             display = searchArray.map((movie, index) => <MovieResult movie={movie} onClick={() => this.onClick(index)} key={index} movieIndex={index} array={searchArray}/>)
         }
@@ -47,15 +47,15 @@ class HomePage extends React.Component {
                     movieYear={searchArray[this.state.clickedMovieIndex].Year}
             />;
         } else {
-            displayMovie = ".";
+            // displayMovie = "";
         }
 
         return(
-            <div className="homepage">
+            <div className="homepage long_div">
                 <div className="searchResults">
                     {display}
                 </div>
-                <div className="display">
+                <div className="display long_div"> 
                     {displayMovie}
                 </div>
             </div>

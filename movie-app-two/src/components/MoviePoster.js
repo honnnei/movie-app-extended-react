@@ -30,14 +30,16 @@ class MoviePoster extends React.Component {
                 <h2>{this.props.movieTitle}</h2>
                 <h3>{this.props.movieYear}</h3>
                 <img src={this.props.posterUrl}></img>
-                <button onClick={this.upVote}>Up Vote!</button>
-                <button onClick={this.downVote}>Down Vote!</button>
-                {this.state.votes}
+                <div className="votes_div">
+                    <button className="btn btn-outline-danger red_button" onClick={this.upVote}>Up Vote!</button>
+                    {this.state.votes}
+                    <button className="btn btn-outline-danger red_button" onClick={this.downVote}>Down Vote!</button>
+                </div>
             </div>
         }
 
         return(
-        <div>
+        <div className="long_div">
             {movieDetails}
         </div>
         );

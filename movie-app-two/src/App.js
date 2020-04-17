@@ -50,7 +50,7 @@ class App extends React.Component {
           <form className = "searchForm" onSubmit = {this.handleSubmit}>
             <label for = "searchTerm" > Search Movies: </label> 
             <input type = "text" name = "searchTerm" value={this.state.movieQuery} onChange={this.handleChange}></input> 
-            <button type = "submit" > Search </button> 
+            <button type="submit" class="btn btn-outline-danger red_button">Search</button>
           </form> 
         </div> 
         <HomePage searchResults = {this.state.selectedMovie}/> 
